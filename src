@@ -1,0 +1,97 @@
+//Create a New React Native Project
+npx react-native init TenderCallingApp
+cd TenderCallingApp
+//Install Required Dependencies
+npm install react-navigation react-navigation-stack
+
+Replace the contents of App.js with the following:
+import React from 'react';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+import HomeScreen from './src/screens/HomeScreen';
+import AnnouncementsScreen from './src/screens/AnnouncementsScreen';
+import AuctionsScreen from './src/screens/AuctionsScreen';
+import InfoScreen from './src/screens/InfoScreen';
+
+const AppNavigator = createStackNavigator(
+  {
+    Home: HomeScreen,
+    Announcements: AnnouncementsScreen,
+    Auctions: AuctionsScreen,
+    Info: InfoScreen,
+  },
+  {
+    initialRouteName: 'Home',
+  }
+);
+const authenticateUser = () => {
+  // Implementation for user authentication
+  console.log('User authenticated');
+};
+
+// Placeholder for real-time notifications (using Firebase Cloud Messaging)
+const sendNotification = () => {
+  // Implementation for sending real-time notifications
+  console.log('Notification sent');
+};
+
+// Placeholder for feedback submission
+const submitFeedback = () => {
+  // Implementation for submitting feedback
+  console.log('Feedback submitted');
+};
+
+// Placeholder for document uploads
+const uploadDocument = () => {
+  // Implementation for document uploads
+  console.log('Document uploaded');
+};
+
+// ... (Continue with other functions and components)
+
+const AppNavigator = createStackNavigator(
+  {
+    Home: HomeScreen,
+    Announcements: AnnouncementsScreen,
+    Auctions: AuctionsScreen,
+    Info: InfoScreen,
+  },
+  {
+    initialRouteName: 'Home',
+  }
+);
+
+
+export default createAppContainer(AppNavigator);
+
+//Create the following screen components in the src/screens folder: HomeScreen.js, AnnouncementsScreen.js, AuctionsScreen.js, InfoScreen.js.
+
+Example HomeScreen.js:
+import React from 'react';
+import { View, Text, Button } from 'react-native';
+
+const HomeScreen = ({ navigation }) => {
+  return (
+    <View>
+      <Text>Welcome to Tender Calling App!</Text>
+      <Button
+        title="Announcements"
+        onPress={() => navigation.navigate('Announcements')}
+      />
+      <Button
+        title="Auctions"
+        onPress={() => navigation.navigate('Auctions')}
+      />
+      <Button title="Info" onPress={() => navigation.navigate('Info')} />
+    </View>
+  );
+};
+
+export default HomeScreen;
+
+// Similarly, create AnnouncementsScreen.js, AuctionsScreen.js, and InfoScreen.js with their respective content
+
+//Run the App:
+npx react-native run-android
+// for ios
+npx react-native run-ios
